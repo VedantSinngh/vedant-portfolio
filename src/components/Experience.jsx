@@ -1,6 +1,8 @@
 import React from 'react';
-import { SiJavascript, SiReact, SiNextdotjs, SiMongodb } from 'react-icons/si';
-import logo from '../assets/logo.png'; // Adjust the path as necessary
+import { SiJavascript, SiReact, SiNextdotjs, SiMongodb, SiPython } from 'react-icons/si';
+import HTB from '../assets/logo.png'; 
+import AWS from '../assets/projects/amazon_web_services_logo.jpeg'; 
+
 
 const ExperienceCard = ({ role, company, duration, description, technologies, image }) => {
     return (
@@ -57,20 +59,18 @@ const Experience = () => {
                 { name: "Next.js", icon: SiNextdotjs, color: "#fff" },
                 { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
             ],
-            image: logo,
+            image: HTB,
         },
-        // {
-        //     role: "Web Developer",
-        //     company: "Tech Solutions",
-        //     duration: "2022 - 2024",
-        //     description: "Contributed to various projects focusing on front-end development and user experience. Collaborated with design teams to create responsive and visually appealing websites.",
-        //     technologies: [
-        //         { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-        //         { name: "React.js", icon: SiReact, color: "#61DAFB" },
-        //         { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-        //     ],
-        //     image: logo,
-        // },
+        {
+            role: "Intern",
+            company: "AWS-(AICTE)",
+            duration: "2023",
+            description: "Contributed in the fields of AI & ML (Virtual Intership)",
+            technologies: [
+                { name: "Python", icon: SiPython, color: "#F7DF1E" },
+            ],
+            image: AWS,
+        },
         // Add more experiences as needed
     ];
 

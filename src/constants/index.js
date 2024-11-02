@@ -46,4 +46,5 @@ export const PROJECTS = [
 export const CONTACT = {
     phoneNo: "+91 9399789804",
     email: "vedaantsinngh@gmail.com",
+    address: "Chennai , India"
 };
