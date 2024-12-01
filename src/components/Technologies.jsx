@@ -351,10 +351,10 @@ const Technologies = () => {
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 className="text-4xl font-bold text-white/90 mb-4">
-                        Tech Ecosystem
+                        Tech
                     </h2>
                     <p className="text-white/60 max-w-xl mx-auto">
-                        Exploring and mastering a diverse range of modern technologies
+                        Exploring the Tech Stacks
                     </p>
                 </div>
 
