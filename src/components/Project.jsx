@@ -7,7 +7,7 @@ const Project = () => {
         <div className="py-16">
             <div className="container mx-auto px-4">
                 <h1 className="mb-16 text-center text-4xl font-bold text-white">Projects</h1>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {PROJECTS.map((project, index) => (
                         <div 
@@ -22,13 +22,13 @@ const Project = () => {
                                     alt={project.title}
                                 />
                             </div>
-                            
+
                             {/* Hover Overlay */}
                             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm">
                                 <div className="absolute inset-0 p-6 flex flex-col justify-between">
                                     <div>
                                         <h2 className="text-xl font-bold text-white mb-4">{project.title}</h2>
-                                        
+
                                         {/* Technologies */}
                                         <div className="flex flex-wrap gap-2">
                                             {project.technologies.map((tech, techIndex) => (
@@ -41,7 +41,7 @@ const Project = () => {
                                             ))}
                                         </div>
                                     </div>
-                                    
+
                                     {/* View Project Link */}
                                     <a 
                                         href={project.link}
@@ -54,7 +54,7 @@ const Project = () => {
                                     </a>
                                 </div>
                             </div>
-                            
+
                             {/* Decorative Elements */}
                             <div className="absolute top-4 right-4 opacity-50 group-hover:opacity-100 transition-opacity duration-300">
                                 <div className="w-3 h-3 border-t-2 border-r-2 border-green-400"></div>
