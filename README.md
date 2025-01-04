@@ -1,6 +1,24 @@
-# Getting Started with Create React App
+# Vedant's Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to my portfolio project! This project showcases my work and skills using React.
+
+## Introduction
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It highlights my projects, skills, and experiences. 
+
+## Features
+
+- Responsive design
+- Interactive UI
+- Project showcase
+- Contact form
+
+## Technologies Used
+
+- React
+- JavaScript
+- CSS
+- HTML
 
 ## Available Scripts
 
@@ -35,9 +53,32 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point, you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Installation
+
+1. Clone the repo:
+   ```sh
+   git clone https://github.com/VedantSinngh/vedant-portfolio.git
+   ```
+2. Install NPM packages:
+   ```sh
+   npm install
+   ```
+3. Start the development server:
+   ```sh
+   npm start
+   ```
+
+## Contribution Guidelines
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## Learn More
 
