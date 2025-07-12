@@ -1,7 +1,8 @@
 import React from 'react';
 import { SiJavascript, SiReact, SiNextdotjs, SiMongodb, SiPython } from 'react-icons/si';
-import HTB from '../assets/logo.png'; 
-import AWS from '../assets/projects/amazon_web_services_logo.jpeg'; 
+import HTB from '../assets/logo.png';
+import AWS from '../assets/projects/amazon_web_services_logo.jpeg';
+import DRDO from "../assets/projects/DRDO.jpeg"; // Add the DRDO logo image path
 
 
 const ExperienceCard = ({ role, company, duration, description, technologies, image }) => {
@@ -49,7 +50,7 @@ const ExperienceCard = ({ role, company, duration, description, technologies, im
 const Experience = () => {
     const experiences = [
         {
-            role: "Associate",
+            role: "Lead",
             company: "Hack The Box SRMIST",
             duration: "2024 - Present",
             description: "Led a team in developing and maintaining web applications using JavaScript, React.js, and Node.js. Implemented RESTful APIs and integrated with MongoDB databases.",
@@ -70,6 +71,16 @@ const Experience = () => {
                 { name: "Python", icon: SiPython, color: "#F7DF1E" },
             ],
             image: AWS,
+        },
+        {
+            role: "Intern",
+            company: "SAG-DRDO",
+            duration: "May2025 - Present",
+            description: "Contributing to AI and Quantum ML research using Python and Qiskit.",
+            technologies: [
+                { name: "Python", icon: SiPython, color: "#F7DF1E" },
+            ],
+            image: DRDO,
         },
         // Add more experiences as needed
     ];
