@@ -10,38 +10,56 @@ function Footer() {
                     {/* Brand Section */}
                     <div className="space-y-4">
                         <h3 className="text-xl font-semibold text-neutral-200">Vedant Singh</h3>
-                        <p className="text-sm text-neutral-400 leading-relaxed">
-                            Exploring Endless Possibilities.
+                        <p className="text-sm text-neutral-400 leading-relaxed max-w-md">
+                            Exploring Endless Possibilities. Building innovative solutions through code.
                         </p>
+
+                        {/* Social Links */}
+                        <div className="flex space-x-4 pt-2">
+                            <a href="https://github.com/VedantSinngh" 
+                               className="text-neutral-400 hover:text-cyan-300 transition-colors duration-300">
+                                <Github size={20} />
+                            </a>
+                            <a href="https://linkedin.com/in/vedaantsinngh" 
+                               className="text-neutral-400 hover:text-cyan-300 transition-colors duration-300">
+                                <Linkedin size={20} />
+                            </a>
+                            <a href="https://twitter.com/yourusername" 
+                               className="text-neutral-400 hover:text-cyan-300 transition-colors duration-300">
+                                <Twitter size={20} />
+                            </a>
+                        </div>
                     </div>
 
-                    {/* Quick Links */}
+                    {/* Portfolio Highlights */}
                     <div className="space-y-4">
-                        <h3 className="text-xl font-semibold text-neutral-200">Quick Links</h3>
-                        <ul className="space-y-2 text-neutral-400">
-                            <li>
-                                <a href="#about" className="hover:text-cyan-300 transition-colors duration-300">
-                                    About
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#projects" className="hover:text-cyan-300 transition-colors duration-300">
-                                    Projects
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#technologies" className="hover:text-cyan-300 transition-colors duration-300">
-                                    Technologies
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#experience" className="hover:text-cyan-300 transition-colors duration-300">
-                                    Experience
-                                </a>
-                            </li>
-                        </ul>
+                        <h3 className="text-xl font-semibold text-neutral-200">Portfolio Highlights</h3>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="text-center p-3 bg-neutral-800/30 rounded-lg">
+                                <div className="text-2xl font-bold text-cyan-300">2+</div>
+                                <div className="text-sm text-neutral-400">Years Experience</div>
+                            </div>
+                            <div className="text-center p-3 bg-neutral-800/30 rounded-lg">
+                                <div className="text-2xl font-bold text-cyan-300">15+</div>
+                                <div className="text-sm text-neutral-400">Projects</div>
+                            </div>
+                            <div className="text-center p-3 bg-neutral-800/30 rounded-lg">
+                                <div className="text-2xl font-bold text-cyan-300">10+</div>
+                                <div className="text-sm text-neutral-400">Technologies</div>
+                            </div>
+                            <div className="text-center p-3 bg-neutral-800/30 rounded-lg">
+                                <div className="text-2xl font-bold text-cyan-300">100%</div>
+                                <div className="text-sm text-neutral-400">Client Satisfaction</div>
+                            </div>
+                        </div>
                     </div>
+                </div>
 
+                {/* Copyright */}
+                <div className="border-t border-neutral-800 mt-8 pt-8">
+                    <p className="text-center text-sm text-neutral-400">
+                        © {new Date().getFullYear()} Vedant Singh. All rights reserved.
+                    </p>
                 </div>
             </div>
         </footer>

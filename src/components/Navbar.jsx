@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../assets/VS.png';
+import leetcodeLogo from '../assets/leetcode.png'; // 👈 Add LeetCode image here
 import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Navbar = () => {
@@ -40,6 +41,18 @@ const Navbar = () => {
                     className="text-neutral-400 hover:text-neutral-100 transform hover:scale-125 transition-all duration-200 hover:-translate-y-1"
                 >
                     <FaTwitter className="hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]" />
+                </a>
+                <a 
+                    href="https://leetcode.com/vedaantsinngh/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="transform hover:scale-125 transition-all duration-200 hover:-translate-y-1"
+                >
+                    <img 
+                        src={leetcodeLogo} 
+                        alt="LeetCode" 
+                        className="w-6 h-6 grayscale hover:grayscale-0 hover:drop-shadow-[0_0_8px_rgba(255,200,0,0.5)] transition-all duration-200"
+                    />
                 </a>
             </div>
         </nav>
