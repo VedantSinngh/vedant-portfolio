@@ -3,6 +3,31 @@ import { SiJavascript, SiReact, SiNextdotjs, SiMongodb, SiPython } from 'react-i
 import HTB from '../assets/logo.png';
 import AWS from '../assets/projects/amazon_web_services_logo.jpeg';
 import DRDO from "../assets/projects/DRDO.jpeg"; // Add the DRDO logo image path
+import { motion } from 'framer-motion';
+
+const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            duration: 0.8,
+            ease: "easeOut"
+        }
+    },
+};
+
+const cardVariants = {
+    hidden: { opacity: 0, x: 100 },
+    visible: {
+        opacity: 1,
+        x: 0,
+        transition: {
+            duration: 0.6,
+            ease: 'easeOut',
+        },
+    },
+};
 
 
 const ExperienceCard = ({ role, company, duration, description, technologies, image }) => {
@@ -88,9 +113,18 @@ const Experience = () => {
     return (
         <section className="relative py-20">
             <div className="max-w-4xl mx-auto px-4">
-                <h2 className="text-4xl font-bold text-white/90 mb-16 text-center">
-                    Experience
-                </h2>
+                <motion.div
+                    variants={cardVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="flex flex-col items-center my-20"
+                >
+                    <h1 className="text-6xl font-thin mb-4 tracking-wider">
+                        My
+                        <span className="ml-4 text-neutral-500">Experience</span>
+                    </h1>
+                    <div className="w-32 h-1 bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 rounded-full" />
+                </motion.div>
 
                 {/* Conditional layout for Experience Cards */}
                 <div className={`grid ${experiences.length === 1 ? 'flex justify-center' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'} gap-8`}>

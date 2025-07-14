@@ -49,6 +49,27 @@ export const PROJECTS = [
         technologies: ["Next.js", "MySQL", "Scikit-learn", "XGBoost", "GROQ", "Phidata", "TomTom API", "OpenWeather API"],
         link: "https://github.com/Adityapratapsingh28/InvenX",
     },
+    // {
+    //     title: "EliteFit",
+    //     image: project4,
+    //     description: "A fitness app with real-time streak tracking, leaderboard, and AI-driven workout suggestions.",
+    //     technologies: ["React Native", "Expo", "TypeScript", "Firebase", "Node.js", "Express"],
+    //     link: "https://github.com/VedantSinngh/Elitefit",
+    // },
+    // {
+    //     title: "Neurovia.AI",
+    //     image: project5, // Add corresponding image import
+    //     description: "Disease detection using ResNet50 and GenAI-based DNA analysis with voice interaction.",
+    //     technologies: ["TensorFlow", "Python", "Flask", "Next.js", "TypeScript", "GROQ", "Phidata"],
+    //     link: "https://github.com/VedantSinngh/neurovia",
+    // },
+    // {
+    //     title: "InvenX",
+    //     image: project6, // Add corresponding image import
+    //     description: "Smart warehouse system with ML forecasting, GenAI placement, and dynamic delivery routing.",
+    //     technologies: ["Next.js", "MySQL", "Scikit-learn", "XGBoost", "GROQ", "Phidata", "TomTom API", "OpenWeather API"],
+    //     link: "https://github.com/Adityapratapsingh28/InvenX",
+    // },
 ];
 
 

@@ -1,15 +1,37 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
 import { CONTACT } from '../constants/index';
+import { motion } from 'framer-motion';
+
+
+const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            duration: 0.8,
+            ease: "easeOut"
+        }
+    },
+};
+
 
 const Contact = () => {
     return (
         <section className="relative">
             {/* Contact Section */}
             <div className='border-b border-neutral-800/40 pb-20'>
-                <h1 className="my-10 text-center text-4xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-neutral-200 to-neutral-400">
-                    Get In Touch
-                </h1>
+                <motion.div variants={item} className="flex flex-col items-center my-20">
+                    <h1 className='text-6xl font-thin mb-4 tracking-wider'>
+                        Contact Me
+                        {/* <span className='ml-4 text-neutral-500'>
+                            Projects
+                        </span> */}
+                    </h1>
+                    <div className="w-32 h-1 bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 rounded-full" />
+                </motion.div>
+
 
                 <div className="max-w-2xl mx-auto backdrop-blur-sm bg-neutral-900/20 rounded-2xl p-8 shadow-lg border border-neutral-800/40">
                     <div className="space-y-6">
