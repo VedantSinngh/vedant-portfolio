@@ -75,7 +75,7 @@ const ExperienceCard = ({ role, company, duration, description, technologies, im
 const Experience = () => {
     const experiences = [
         {
-            role: "Lead",
+            role: "Admin-President",
             company: "Hack The Box SRMIST",
             duration: "2024 - Present",
             description: "Led a team in developing and maintaining web applications using JavaScript, React.js, and Node.js. Implemented RESTful APIs and integrated with MongoDB databases.",
