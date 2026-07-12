@@ -1,4 +1,3 @@
-import project1 from "../assets/projects/EliteFit.png";
 import project2 from "../assets/projects/NeuroviaAI.png";
 import project3 from "../assets/projects/Invenx.png";
 import projectWeather from "../assets/projects/Weather.png"; // Placeholder/Substitute fallback image if needed

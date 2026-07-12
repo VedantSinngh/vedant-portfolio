@@ -33,7 +33,7 @@ const ExpItem = ({ exp, index }) => {
 };
 
 const Experience = () => {
-  const [ref, visible] = useScrollReveal();
+  const [ref] = useScrollReveal();
 
   return (
     <section className="section-pad py-section" id="experience">

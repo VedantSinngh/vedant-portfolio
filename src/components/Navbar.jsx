@@ -36,7 +36,7 @@ const Navbar = () => {
       >
         <div className="section-pad w-full flex items-center justify-between py-0">
           <a
-            href="#"
+            href="/"
             className="font-display text-[22px] font-medium tracking-tight text-ink"
             onClick={(e) => {
               e.preventDefault();
