@@ -1,100 +1,75 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowDownCircle } from 'lucide-react';
-import { SomeIcon } from 'lucide-react';
-
-import profilePic from "../assets/Vedant Singh.jpeg";
-
-const fadeIn = (delay) => ({
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-        y: 0,
-        opacity: 1,
-        transition: { duration: 0.6, delay, ease: "easeOut" }
-    }
-});
+import React, { useEffect, useState } from 'react';
+import { CONTACT } from '../constants';
+import mainPhoto from '../assets/vedant-main.png';
+import { ExternalLink } from 'lucide-react';
 
 const Hero = () => {
-    return (
-        <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
-            {/* Background Gradient - Make it transparent */}
-            <div className="absolute inset-0 bg-transparent" />
+  const [show, setShow] = useState(false);
 
-            <div className="container mx-auto px-6 py-16 relative z-10">
-                <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-                    {/* Left Content */}
-                    <motion.div
-                        initial="hidden"
-                        animate="visible"
-                        className="flex-1 text-center lg:text-left"
-                    >
-                        <motion.h1
-                            variants={fadeIn(0.2)}
-                            className="text-6xl lg:text-8xl font-thin tracking-tight text-white mb-6"
-                        >
-                            Vedant Singh
-                        </motion.h1>
+  useEffect(() => {
+    const t = setTimeout(() => setShow(true), 80);
+    return () => clearTimeout(t);
+  }, []);
 
-                        <motion.div
-                            variants={fadeIn(0.4)}
-                            className="relative inline-block mb-8"
-                        >
-                            <span className="text-4xl lg:text-5xl tracking-tight bg-gradient-to-r from-pink-300 via-slate-400 to-purple-500 bg-clip-text text-transparent">
-                                Full Stack Developer
-                            </span>
-                            <div className="absolute -bottom-2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-50" />
-                        </motion.div>
+  const fade = (delay = 0) => ({
+    opacity: show ? 1 : 0,
+    transform: show ? 'translateY(0)' : 'translateY(16px)',
+    transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
+  });
 
-                        <motion.div
-                            variants={fadeIn(0.6)}
-                            className="mt-8"
-                        >
-                            <a
-                                href="https://drive.google.com/file/d/1poZU6_BrLKTP-pfVdHWN1cDPVND2LciW/view?usp=sharing"
-                                target='_blank'
-                                rel="noopener noreferrer"
-                                className="group inline-flex items-center gap-3 px-6 py-3 bg-white/10 
-                backdrop-blur-sm rounded-full hover:bg-white/20 transition-all duration-300
-                border border-white/20 hover:border-white/40"
-                            >
-                                <span className="text-white font-medium">View Resume</span>
-                                <ArrowDownCircle className="w-5 h-5 text-white group-hover:translate-y-1 transition-transform duration-300" />
-                            </a>
-                        </motion.div>
-                    </motion.div>
+  return (
+    <section className="relative min-h-[90vh] flex items-center py-section overflow-hidden" id="hero">
+      {/* Atmospheric Gradient Orb */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] orb-lavender opacity-40 blur-[80px] pointer-events-none rounded-full mix-blend-screen dark:mix-blend-normal"></div>
 
-                    {/* Right Content - Image */}
-                    <motion.div
-                        initial={{ x: 100, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
-                        className="flex-1 relative"
-                    >
-                        <div className="relative group">
-                            {/* Main Image */}
-                            <div className="relative w-80 h-96 lg:w-[700px] lg:h-[550px] rounded-2xl overflow-hidden">
-                                <img
-                                    src={profilePic}
-                                    alt="Profile"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                {/* Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                            </div>
+      <div className="section-pad relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-24 items-center">
+          <div className="max-w-[720px]">
+            <h1 className="t-display-mega mb-6" style={fade(0)}>
+              <span className="block">Vedant</span>
+              <span className="block">Singh</span>
+            </h1>
 
-                            {/* Decorative Elements */}
-                            <div className="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-purple-500/30 rounded-tr-2xl" />
-                            <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-pink-500/30 rounded-bl-2xl" />
+            <p className="t-body-md text-[18px] mb-8 max-w-[540px]" style={fade(0.15)}>
+              Applied ML engineering and quantum computing research. Building things that work.
+            </p>
 
-                            {/* Glowing Orb */}
-                            <div className="absolute -top-20 -right-20 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl" />
-                            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-pink-500/20 rounded-full blur-3xl" />
-                        </div>
-                    </motion.div>
-                </div>
+            <div className="flex items-center gap-2 mb-10" style={fade(0.25)}>
+              <span className="w-2 h-2 rounded-full bg-semantic-success animate-pulse" />
+              <span className="font-body text-[13px] tracking-wide uppercase text-muted">
+                CSE (AI-ML), SRM &nbsp;·&nbsp; DRDO SAG &nbsp;·&nbsp; 9.18 CGPA
+              </span>
             </div>
+
+            <div className="flex flex-wrap gap-4" style={fade(0.35)}>
+              <a href="#work" className="btn-primary" onClick={(e) => {
+                e.preventDefault();
+                document.querySelector('#work')?.scrollIntoView({ behavior: 'smooth' });
+              }}>
+                View Work
+              </a>
+              <a href={CONTACT.resume} target="_blank" rel="noopener noreferrer" className="btn-outline">
+                Resume
+                <ExternalLink size={16} strokeWidth={1.5} />
+              </a>
+            </div>
+          </div>
+
+          <div className="relative justify-self-center lg:justify-self-end" style={fade(0.2)}>
+            <div className="w-[280px] h-[360px] md:w-[320px] md:h-[420px] rounded-2xl overflow-hidden relative border border-hairline-strong shadow-sm bg-surface-card p-2">
+               <div className="w-full h-full rounded-xl overflow-hidden relative bg-canvas-soft">
+                  <img 
+                    src={mainPhoto} 
+                    alt="Vedant Singh" 
+                    className="w-full h-full object-cover object-top grayscale contrast-110 hover:grayscale-0 transition-all duration-700 mix-blend-luminosity hover:mix-blend-normal" 
+                  />
+               </div>
+            </div>
+          </div>
         </div>
-    );
+      </div>
+    </section>
+  );
 };
 
 export default Hero;

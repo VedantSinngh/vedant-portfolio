@@ -1,13 +1,164 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400&family=Inter:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: "Inter", sans-serif;
+@layer base {
+  :root {
+    /* DEFAULT TO DARK THEME */
+    --canvas: #0c0a09;
+    --canvas-soft: #171514; /* Slight elevation for dark mode */
+    --canvas-deep: #f5f5f5; /* Inverted for light mode hero equivalent */
+    
+    --surface-card: #1c1917; /* Dark card */
+    --surface-strong: #292524;
+    --surface-dark: #f5f5f5;
+    --surface-dark-elevated: #ffffff;
+    
+    --primary: #f5f5f5; /* Off-white pill */
+    --primary-active: #ffffff;
+    
+    --hairline: #292524;
+    --hairline-soft: #1c1917;
+    --hairline-strong: #4e4e4e;
+    
+    --ink: #f5f5f5; /* White ink */
+    --body: #a8a29e; /* Lighter body text */
+    --body-strong: #d6d3d1;
+    --muted: #777169;
+    --muted-soft: #4e4e4e;
+    
+    --on-primary: #0c0a09; /* Black text on white pill */
+    --on-dark: #0c0a09;
+    --on-dark-soft: #4e4e4e;
+
+    /* Atmospheric Gradients (Same across themes) */
+    --gradient-mint: #a7e5d3;
+    --gradient-peach: #f4c5a8;
+    --gradient-lavender: #c8b8e0;
+    --gradient-sky: #a8c8e8;
+    --gradient-rose: #e8b8c4;
+    
+    --semantic-success: #16a34a;
+    --semantic-error: #dc2626;
+  }
+
+  .light {
+    /* LIGHT THEME (ElevenLabs Spec) */
+    --canvas: #f5f5f5;
+    --canvas-soft: #fafafa;
+    --canvas-deep: #0c0a09;
+    
+    --surface-card: #ffffff;
+    --surface-strong: #f0efed;
+    --surface-dark: #0c0a09;
+    --surface-dark-elevated: #1c1917;
+    
+    --primary: #292524; /* Near-black ink pill */
+    --primary-active: #0c0a09;
+    
+    --hairline: #e7e5e4;
+    --hairline-soft: #f0efed;
+    --hairline-strong: #d6d3d1;
+    
+    --ink: #0c0a09;
+    --body: #4e4e4e;
+    --body-strong: #292524;
+    --muted: #777169;
+    --muted-soft: #a8a29e;
+    
+    --on-primary: #ffffff;
+    --on-dark: #ffffff;
+    --on-dark-soft: #a8a29e;
+  }
 }
 
-/* In your global CSS */
-.perspective-1000 {
-    perspective: 1000px;
+@layer base {
+  body {
+    @apply bg-canvas text-body font-body antialiased transition-colors duration-300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-ink font-display font-light;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-[20px] py-[10px] h-[40px] bg-primary text-on-primary font-body text-[15px] font-medium leading-none tracking-normal rounded-pill transition-all duration-200 hover:bg-primary-active active:scale-95;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-[20px] py-[10px] h-[40px] bg-transparent text-ink font-body text-[15px] font-medium leading-none tracking-normal rounded-pill border border-hairline-strong transition-all duration-200 hover:bg-canvas-soft active:scale-95;
+  }
+  
+  /* Containers & Sections */
+  .section-pad {
+    @apply py-section px-5 md:px-10 max-w-[1200px] mx-auto;
+  }
+
+  /* Cards */
+  .feature-card {
+    @apply bg-surface-card text-ink rounded-xl p-lg border border-hairline transition-all duration-300 hover:shadow-[0_4px_16px_rgba(0,0,0,0.04)] relative overflow-hidden;
+  }
+
+  /* Typography Utilities */
+  .t-display-mega {
+    @apply font-display text-[32px] sm:text-[48px] lg:text-[64px] font-light leading-[1.05] tracking-display-mega text-ink;
+  }
+
+  .t-display-xl {
+    @apply font-display text-[28px] sm:text-[36px] lg:text-[48px] font-light leading-[1.08] tracking-display-xl text-ink;
+  }
+
+  .t-display-lg {
+    @apply font-display text-[24px] sm:text-[28px] lg:text-[36px] font-light leading-[1.17] tracking-display-lg text-ink;
+  }
+  
+  .t-display-md {
+    @apply font-display text-[22px] lg:text-[32px] font-light leading-[1.13] tracking-display-md text-ink;
+  }
+
+  .t-display-sm {
+    @apply font-display text-[20px] lg:text-[24px] font-light leading-[1.2] tracking-display-sm text-ink;
+  }
+
+  .t-body-md {
+    @apply font-body text-[16px] font-normal leading-[1.5] tracking-body-md text-body;
+  }
+  
+  .t-body-strong {
+    @apply font-body text-[16px] font-medium leading-[1.5] tracking-body-md text-body-strong;
+  }
+  
+  .t-body-sm {
+    @apply font-body text-[15px] font-normal leading-[1.47] tracking-body-sm text-body;
+  }
+  
+  .t-caption-uppercase {
+    @apply font-body text-[12px] font-semibold leading-[1.4] tracking-caption-uppercase uppercase text-muted;
+  }
+
+  /* Atmospheric Orbs */
+  .orb-mint {
+    background: radial-gradient(circle, var(--gradient-mint) 0%, transparent 70%);
+  }
+  .orb-peach {
+    background: radial-gradient(circle, var(--gradient-peach) 0%, transparent 70%);
+  }
+  .orb-lavender {
+    background: radial-gradient(circle, var(--gradient-lavender) 0%, transparent 70%);
+  }
+  .orb-sky {
+    background: radial-gradient(circle, var(--gradient-sky) 0%, transparent 70%);
+  }
+  .orb-rose {
+    background: radial-gradient(circle, var(--gradient-rose) 0%, transparent 70%);
+  }
 }
