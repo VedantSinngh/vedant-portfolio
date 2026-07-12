@@ -3,8 +3,8 @@ import './index.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Projects from './components/Project';
-import Research from './components/Research';
 import Experience from './components/Experience';
+import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { ThemeProvider } from './context/ThemeContext';
@@ -18,16 +18,16 @@ const Divider = () => (
 const App = () => {
   return (
     <ThemeProvider>
-      {/* Subtle film grain overlay could go here if needed, but keeping it clean for ElevenLabs design */}
-      
       <Navbar />
       <main>
         <Hero />
         <Divider />
         <Projects />
-        <Research />
         <Divider />
         <Experience />
+        <Divider />
+        <Certifications />
+        <Divider />
         <Contact />
       </main>
       <Footer />

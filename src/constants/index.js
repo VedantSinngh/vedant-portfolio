@@ -80,6 +80,21 @@ export const EXPERIENCES = [
   },
 ];
 
+export const CERTIFICATIONS = [
+  {
+    title: "AWS Certified Cloud Practitioner",
+    issuer: "Amazon Web Services",
+    date: "2024",
+    link: "#"
+  },
+  {
+    title: "Machine Learning Specialization",
+    issuer: "Coursera",
+    date: "2023",
+    link: "#"
+  }
+];
+
 export const CONTACT = {
   email: "vedaantsinngh@gmail.com",
   linkedin: "https://www.linkedin.com/in/vedant-singh-b90872286/",

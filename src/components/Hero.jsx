@@ -61,7 +61,7 @@ const Hero = () => {
                   <img 
                     src={mainPhoto} 
                     alt="Vedant Singh" 
-                    className="w-full h-full object-cover object-top grayscale contrast-110 hover:grayscale-0 transition-all duration-700 mix-blend-luminosity hover:mix-blend-normal" 
+                    className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105" 
                   />
                </div>
             </div>

@@ -8,21 +8,21 @@ const ExpItem = ({ exp, index }) => {
   return (
     <div
       ref={ref}
-      className={`grid grid-cols-1 md:grid-cols-[180px_1fr] gap-4 md:gap-8 py-8 border-b border-hairline-soft first:border-t reveal ${visible ? 'visible' : ''}`}
+      className={`relative grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12 py-10 border-b border-hairline-soft first:border-t hover:bg-canvas-soft/50 transition-colors reveal ${visible ? 'visible' : ''}`}
       style={{ transitionDelay: `${index * 0.08}s` }}
     >
-      <div className="t-caption-uppercase mt-1">
-        {exp.date}
+      <div className="flex flex-col mt-2">
+        <span className="font-display text-[20px] text-ink">{exp.date}</span>
+        <span className="t-caption-uppercase text-muted mt-2">{exp.company}</span>
       </div>
 
-      <div className="flex flex-col gap-2">
-        <h3 className="t-display-sm !text-[20px] font-medium">{exp.role}</h3>
-        <span className="font-body text-[14px] text-body">{exp.company}</span>
-        <p className="t-body-sm max-w-[600px] mt-2 mb-4">{exp.description}</p>
+      <div className="flex flex-col">
+        <h3 className="t-display-sm !text-[24px] font-medium text-ink mb-3">{exp.role}</h3>
+        <p className="t-body-md max-w-[640px] text-body/90 leading-relaxed mb-6">{exp.description}</p>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mt-auto">
           {exp.technologies.map((t) => (
-            <span key={t} className="t-caption-uppercase bg-surface-strong px-2 py-1 rounded-sm">
+            <span key={t} className="font-body text-[12px] font-medium tracking-wide uppercase px-3 py-1.5 rounded-full border border-hairline bg-surface-card text-ink/80">
               {t}
             </span>
           ))}
@@ -37,9 +37,9 @@ const Experience = () => {
 
   return (
     <section className="section-pad py-section" id="experience">
-      <div className="mb-12" ref={ref}>
+      <div className="mb-16" ref={ref}>
         <span className="t-caption-uppercase">Background</span>
-        <h2 className="t-display-lg mt-4">Experience</h2>
+        <h2 className="t-display-lg mt-4 max-w-[600px]">Professional experience and hackathons.</h2>
       </div>
 
       <div className="flex flex-col">
