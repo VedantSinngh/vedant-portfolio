@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -7,6 +8,7 @@ import Experience from './components/Experience';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ProjectDetail from './components/ProjectDetail';
 import { ThemeProvider } from './context/ThemeContext';
 
 const Divider = () => (
@@ -15,22 +17,33 @@ const Divider = () => (
   </div>
 );
 
+const Portfolio = () => (
+  <>
+    <Navbar />
+    <main>
+      <Hero />
+      <Divider />
+      <Projects />
+      <Divider />
+      <Experience />
+      <Divider />
+      <Certifications />
+      <Divider />
+      <Contact />
+    </main>
+    <Footer />
+  </>
+);
+
 const App = () => {
   return (
     <ThemeProvider>
-      <Navbar />
-      <main>
-        <Hero />
-        <Divider />
-        <Projects />
-        <Divider />
-        <Experience />
-        <Divider />
-        <Certifications />
-        <Divider />
-        <Contact />
-      </main>
-      <Footer />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Portfolio />} />
+          <Route path="/projects/:slug" element={<ProjectDetail />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };

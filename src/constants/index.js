@@ -1,5 +1,5 @@
-import project2 from "../assets/projects/NeuroviaAI.png";
-import project3 from "../assets/projects/Invenx.png";
+import project2 from "../assets/projects/rag.png";
+import project3 from "../assets/projects/inventory.png";
 import projectWeather from "../assets/projects/Weather.png"; // Placeholder/Substitute fallback image if needed
 
 export const PROJECTS = [
@@ -9,8 +9,8 @@ export const PROJECTS = [
     description:
       "An AI-powered platform featuring a RAG pipeline (ChromaDB + HuggingFace embeddings + Llama 3.3) for instant dataset insights, automated cleaning, time-series forecasting (ARIMA), and automated PDF reports.",
     technologies: ["FastAPI", "Next.js", "ChromaDB", "Llama-3.3", "PostgreSQL", "Docker"],
-    github: "https://github.com/VedantSinngh/neurovia",
-    deployed: "#",
+    github: "https://github.com/VedantSinngh/RAG-Data-Analyser",
+    deployed: "https://rag-data-analyser.vercel.app/",
   },
   {
     title: "Inventory Management System",
@@ -19,7 +19,7 @@ export const PROJECTS = [
       "Smart warehouse and inventory system featuring predictive forecasting, dynamic allocation heuristics, and responsive warehouse visualization.",
     technologies: ["Next.js", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
     github: "https://github.com/VedantSinngh/inventory-management",
-    deployed: "#",
+    deployed: "https://inventory-vs.vercel.app/",
   },
   {
     title: "Cloud Cost Analyser",
@@ -62,22 +62,22 @@ export const EXPERIENCES = [
       "Led the development club, organized technical workshops and CTF competitions. Built and maintained web applications for club operations.",
     technologies: ["JavaScript", "React", "Node.js", "MongoDB"],
   },
-  {
-    date: "2025",
-    role: "1st Place",
-    company: "Hackademia'25",
-    description:
-      "Won first place building a full-stack solution under 24-hour constraints with a team of four.",
-    technologies: ["React", "Node.js", "ML"],
-  },
-  {
-    date: "2024",
-    role: "Top 50 Nationally",
-    company: "Smart India Hackathon 2024",
-    description:
-      "Selected among top 50 teams nationally for an AI-driven solution addressing real-world governance challenges.",
-    technologies: ["Python", "TensorFlow", "Next.js"],
-  },
+  // {
+  //   date: "2025",
+  //   role: "1st Place",
+  //   company: "Hackademia'25",
+  //   description:
+  //     "Won first place building a full-stack solution under 24-hour constraints with a team of four.",
+  //   technologies: ["React", "Node.js", "ML"],
+  // },
+  // {
+  //   date: "2024",
+  //   role: "Top 50 Nationally",
+  //   company: "Smart India Hackathon 2024",
+  //   description:
+  //     "Selected among top 50 teams nationally for an AI-driven solution addressing real-world governance challenges.",
+  //   technologies: ["Python", "TensorFlow", "Next.js"],
+  // },
 ];
 
 export const CERTIFICATIONS = [
@@ -97,7 +97,7 @@ export const CERTIFICATIONS = [
 
 export const CONTACT = {
   email: "vedaantsinngh@gmail.com",
-  linkedin: "https://www.linkedin.com/in/vedant-singh-b90872286/",
+  linkedin: "https://www.linkedin.com/in/vedaantsinngh",
   github: "https://github.com/VedantSinngh",
-  resume: "https://drive.google.com/file/d/1poZU6_BrLKTP-pfVdHWN1cDPVND2LciW/view?usp=sharing",
+  resume: "https://drive.google.com/file/d/1BVOrr6ibLe2cLDxkdleUJLEAPc9JZQBb/view?usp=sharing",
 };

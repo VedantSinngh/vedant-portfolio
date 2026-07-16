@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useRouter } from "next/navigation";
 import { projects } from "../data/projects";
+
 
 const DRAG_BUFFER = 50;
 
@@ -15,7 +15,7 @@ const springTransition = {
 
 export default function FanCardCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const router = useRouter();
+  const navigate = (path: string) => { window.location.href = path; };
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleNext = useCallback(() => {
@@ -70,7 +70,7 @@ export default function FanCardCarousel() {
 
   const handleCardClick = (index: number) => {
     if (index === currentIndex) {
-      router.push(`/projects/${projects[currentIndex].slug}`);
+      navigate(`/projects/${projects[currentIndex].slug}`);
     } else {
       setCurrentIndex(index);
     }

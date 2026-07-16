@@ -2,20 +2,7 @@ import imgRag from "../assets/projects/rag.png";
 import imgInvenx from "../assets/projects/Invenx.png";
 import imgWeather from "../assets/projects/Weather.png";
 
-export interface Project {
-  slug: string;
-  title: string;
-  subtitle: string;
-  tag: string;
-  image: string;
-  description: string;
-  features: string[];
-  technologies: string[];
-  githubUrl: string;
-  demoUrl?: string | null;
-}
-
-export const projects: Project[] = [
+export const projects = [
   {
     slug: "analystai",
     title: "AnalystAI",
