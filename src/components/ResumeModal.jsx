@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Download, Loader2 } from 'lucide-react';
+import { X, ArrowUpRight } from 'lucide-react';
 import { useResume } from '../context/ResumeContext';
 import { CONTACT } from '../constants';
 
-// Convert view link to preview link for iframe embedding
 const getEmbedUrl = (url) => {
   if (!url) return '';
   return url.replace('/view?usp=sharing', '/preview').replace('/view', '/preview');
@@ -14,27 +13,20 @@ export default function ResumeModal() {
   const { isOpen, closeResume } = useResume();
   const [isLoading, setIsLoading] = useState(true);
 
-  // Reset loading state when modal opens
   useEffect(() => {
     if (isOpen) {
       setIsLoading(true);
-      // Prevent body scrolling when modal is active
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
+    return () => { document.body.style.overflow = 'unset'; };
   }, [isOpen]);
 
-  // Handle escape key to close modal
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') closeResume();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    const onKey = (e) => { if (e.key === 'Escape') closeResume(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
   }, [closeResume]);
 
   const embedUrl = getEmbedUrl(CONTACT.resume);
@@ -42,72 +34,70 @@ export default function ResumeModal() {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 md:p-6">
-          {/* Backdrop Blur & Overlay */}
+        <div className="fixed inset-0 z-[999] flex items-end sm:items-center justify-center sm:p-6">
+
+          {/* Backdrop — thin dark veil, no heavy blur */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
             onClick={closeResume}
-            className="absolute inset-0 bg-black/60 backdrop-blur-md cursor-pointer"
+            className="absolute inset-0 bg-canvas/80 cursor-pointer"
           />
 
-          {/* Modal Container */}
+          {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.92, y: 30 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 15 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-            className="relative w-full max-w-5xl h-[85vh] bg-surface-card border border-hairline rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ type: 'spring', damping: 30, stiffness: 260 }}
+            className="relative z-10 w-full sm:max-w-4xl h-[90vh] sm:h-[85vh] bg-canvas border border-hairline rounded-t-2xl sm:rounded-2xl overflow-hidden flex flex-col"
           >
-            {/* Modal Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-hairline-soft bg-canvas/40 backdrop-blur-md">
+
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-hairline-soft shrink-0">
               <div>
-                <h3 className="font-display text-[20px] text-ink font-light">Vedant Singh</h3>
-                <p className="text-[12px] text-muted font-body uppercase tracking-wider">Curriculum Vitae</p>
+                <span className="t-caption-uppercase">Resume</span>
+                <h3 className="font-display text-[18px] text-ink font-light leading-tight mt-0.5">
+                  Vedant Singh
+                </h3>
               </div>
 
-              <div className="flex items-center gap-3">
-                {/* Download Button */}
+              <div className="flex items-center gap-2">
                 <a
                   href={CONTACT.resume}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-full border border-hairline bg-surface-strong/60 hover:bg-surface-strong hover:text-ink text-muted transition-all duration-200 text-xs font-body font-medium"
-                  title="Open in new window / Download"
+                  className="flex items-center gap-1.5 font-body text-[13px] text-muted hover:text-ink transition-colors"
+                  title="Open in Google Drive"
                 >
-                  <Download size={14} />
-                  <span className="hidden sm:inline">Open Original</span>
+                  <ArrowUpRight size={15} strokeWidth={1.5} />
+                  <span className="hidden sm:inline">Open in Drive</span>
                 </a>
 
-                {/* Close Button */}
+                <div className="w-px h-4 bg-hairline mx-1" />
+
                 <button
                   onClick={closeResume}
-                  className="p-2 rounded-full text-muted hover:text-ink hover:bg-surface-strong transition-all duration-200"
-                  aria-label="Close modal"
+                  className="p-1.5 text-muted hover:text-ink transition-colors rounded-md hover:bg-surface-strong"
+                  aria-label="Close"
                 >
-                  <X size={20} />
+                  <X size={18} strokeWidth={1.5} />
                 </button>
               </div>
             </div>
 
-            {/* Modal Body / Iframe Container */}
-            <div className="flex-1 w-full bg-[#1e1e1e] relative">
-              {/* Spinner & Shimmer Loading State */}
+            {/* Body */}
+            <div className="flex-1 relative bg-canvas">
+              {/* Minimal loading indicator */}
               {isLoading && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-canvas gap-4 z-20">
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
-                    className="text-ink opacity-65"
-                  >
-                    <Loader2 size={36} />
-                  </motion.div>
-                  <p className="text-muted text-xs font-body tracking-wide">Loading Document...</p>
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 z-20 bg-canvas">
+                  <div className="w-5 h-5 border border-hairline-strong border-t-ink rounded-full animate-spin" />
+                  <span className="t-caption-uppercase text-muted">Loading</span>
                 </div>
               )}
 
-              {/* Iframe */}
               <iframe
                 src={embedUrl}
                 title="Vedant Singh Resume"
