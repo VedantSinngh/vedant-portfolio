@@ -56,14 +56,12 @@ const Hero = () => {
           </div>
 
           <div className="relative justify-self-center lg:justify-self-end" style={fade(0.2)}>
-            <div className="w-[280px] h-[360px] md:w-[320px] md:h-[420px] rounded-2xl overflow-hidden relative border border-hairline-strong shadow-sm bg-surface-card p-2">
-               <div className="w-full h-full rounded-xl overflow-hidden relative bg-canvas-soft">
-                  <img 
-                    src={mainPhoto} 
-                    alt="Vedant Singh" 
-                    className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105" 
-                  />
-               </div>
+            <div className="w-[280px] h-[360px] md:w-[320px] md:h-[420px] rounded-2xl overflow-hidden relative">
+               <img 
+                 src={mainPhoto} 
+                 alt="Vedant Singh" 
+                 className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105" 
+               />
             </div>
           </div>
         </div>
