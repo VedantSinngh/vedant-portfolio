@@ -11,30 +11,30 @@ const springTransition = {
   damping: 28,
 };
 
-// Per-issuer gradient theme
+// Minimalist gradient themes
 const cardTheme = (tag) => {
   if (tag === "AWS")
     return {
-      bg: "linear-gradient(135deg, #1a1200 0%, #2d1f00 40%, #1a0f00 100%)",
+      bg: "linear-gradient(135deg, rgba(30,22,0,0.8) 0%, rgba(45,31,0,0.8) 100%)",
       accent: "#FF9900",
       accentSoft: "rgba(255,153,0,0.12)",
-      border: "rgba(255,153,0,0.25)",
+      border: "rgba(255,153,0,0.2)",
       glow: "0 32px 80px rgba(255,153,0,0.15), 0 0 0 1px rgba(255,153,0,0.2)",
-      glowSide: "0 16px 40px rgba(255,153,0,0.08)",
+      glowSide: "0 16px 40px rgba(255,153,0,0.05)",
       tagText: "#FF9900",
     };
   if (tag === "Salesforce")
     return {
-      bg: "linear-gradient(135deg, #001a2d 0%, #00263d 40%, #00182a 100%)",
+      bg: "linear-gradient(135deg, rgba(0,26,45,0.8) 0%, rgba(0,38,61,0.8) 100%)",
       accent: "#00A1E0",
       accentSoft: "rgba(0,161,224,0.12)",
-      border: "rgba(0,161,224,0.25)",
+      border: "rgba(0,161,224,0.2)",
       glow: "0 32px 80px rgba(0,161,224,0.15), 0 0 0 1px rgba(0,161,224,0.2)",
-      glowSide: "0 16px 40px rgba(0,161,224,0.08)",
+      glowSide: "0 16px 40px rgba(0,161,224,0.05)",
       tagText: "#00A1E0",
     };
   return {
-    bg: "linear-gradient(135deg, #111 0%, #1c1c1c 100%)",
+    bg: "linear-gradient(135deg, rgba(17,17,17,0.8) 0%, rgba(28,28,28,0.8) 100%)",
     accent: "#fff",
     accentSoft: "rgba(255,255,255,0.08)",
     border: "rgba(255,255,255,0.15)",
@@ -101,7 +101,7 @@ export default function CertFanCarousel() {
       {/* Carousel */}
       <div
         ref={containerRef}
-        className="relative w-full h-[340px] md:h-[420px] flex items-center justify-center"
+        className="relative w-full h-[300px] md:h-[380px] flex items-center justify-center"
         style={{ perspective: "1200px" }}
         aria-label="Certifications carousel"
       >
@@ -117,7 +117,7 @@ export default function CertFanCarousel() {
           return (
             <motion.div
               key={cert.credentialId}
-              className="absolute w-[78%] md:w-[50%] h-[260px] md:h-[340px] rounded-3xl overflow-hidden"
+              className="absolute w-[65%] md:w-[40%] h-[260px] md:h-[340px] rounded-3xl overflow-hidden backdrop-blur-md"
               style={{
                 zIndex: CERTIFICATIONS.length - absOffset,
                 transformOrigin: "bottom center",
@@ -127,10 +127,10 @@ export default function CertFanCarousel() {
                 border: `1px solid ${theme.border}`,
               }}
               animate={{
-                rotateZ: isCenter ? 0 : offset * 6,
-                x: isCenter ? 0 : offset * 110,
-                scale: isCenter ? 1 : 0.82 - absOffset * 0.04,
-                opacity: absOffset > 2 ? 0 : isCenter ? 1 : 0.72,
+                rotateZ: isCenter ? 0 : offset * 8,
+                x: isCenter ? 0 : offset * 130,
+                scale: isCenter ? 1 : 0.85 - absOffset * 0.05,
+                opacity: absOffset > 2 ? 0 : isCenter ? 1 : 0.6,
               }}
               transition={springTransition}
               drag={isCenter ? "x" : false}
@@ -157,63 +157,43 @@ export default function CertFanCarousel() {
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  background: `radial-gradient(ellipse 80% 60% at 50% 100%, ${theme.accentSoft} 0%, transparent 70%)`,
+                  background: `radial-gradient(circle at 50% 50%, ${theme.accentSoft} 0%, transparent 60%)`,
                 }}
               />
 
-              {/* Content */}
-              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">
-                {/* Top row */}
-                <div className="flex items-start justify-between">
+              {/* Minimalist Content */}
+              <div className="absolute inset-0 p-5 flex flex-col items-center justify-center">
+                {/* Top-right Tag (Optional, keeps it clean) */}
+                <div className="absolute top-5 left-5">
                   <span
-                    className="text-[11px] font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full border"
+                    className="text-[10px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded-full border"
                     style={{ color: theme.tagText, borderColor: theme.border, background: theme.accentSoft }}
                   >
                     {cert.tag}
                   </span>
-                  {isCenter && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -6 }}
-                      animate={{ opacity: hint ? 1 : 0, y: hint ? 0 : -6 }}
-                      transition={{ duration: 0.4 }}
-                      className="flex items-center gap-1.5 text-[11px] font-medium"
-                      style={{ color: `${theme.tagText}90` }}
-                    >
-                      <MousePointer2 size={12} />
-                      verify
-                    </motion.div>
-                  )}
                 </div>
 
-                {/* Bottom */}
-                <div>
-                  <h3 className="text-xl md:text-2xl font-light text-white leading-snug mb-2">
-                    {cert.title}
-                  </h3>
-                  <p className="text-[13px] mb-1" style={{ color: `${theme.tagText}99` }}>
-                    {cert.issuer}
-                  </p>
-                  <p className="text-[12px] text-white/40 mb-4">
-                    Issued {cert.issued}
-                    {cert.expires ? ` · Expires ${cert.expires}` : ""}
-                  </p>
+                {isCenter && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: hint ? 1 : 0, y: hint ? 0 : -6 }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute top-5 right-5 flex items-center gap-1.5 text-[10px] font-medium"
+                    style={{ color: `${theme.tagText}90` }}
+                  >
+                    <MousePointer2 size={12} />
+                    verify
+                  </motion.div>
+                )}
 
-                  {isCenter && (
-                    <motion.div
-                      initial={{ opacity: 0, x: -8 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.15, ...springTransition }}
-                      className="flex items-center gap-1.5 text-sm font-medium group"
-                      style={{ color: theme.tagText }}
-                    >
-                      <span>View Credential</span>
-                      <ArrowUpRight
-                        size={14}
-                        className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      />
-                    </motion.div>
-                  )}
-                </div>
+                {/* Center Badge Image */}
+                <motion.img 
+                  src={cert.badge} 
+                  alt={cert.title}
+                  className="w-32 h-32 md:w-40 md:h-40 object-contain drop-shadow-2xl mt-4"
+                  animate={{ scale: isCenter ? 1 : 0.9, y: isCenter ? 0 : 10 }}
+                  transition={springTransition}
+                />
               </div>
 
               {/* Active glow ring */}
@@ -235,15 +215,26 @@ export default function CertFanCarousel() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        className="mt-8 text-center"
+        className="mt-8 text-center flex flex-col items-center"
       >
-        <p className="text-muted text-xs font-body uppercase tracking-widest">
-          ID: {active.credentialId}
-        </p>
+        <h3 className="font-display font-light text-[22px] md:text-[24px] text-ink leading-tight mb-2 max-w-[500px] px-4">
+          {active.title}
+        </h3>
+        <div className="flex items-center gap-3 flex-wrap justify-center mb-1.5">
+          <span className="font-body text-[13px] text-muted">{active.issuer}</span>
+          <span className="w-1 h-1 rounded-full bg-muted-soft inline-block" />
+          <span className="font-body text-[13px] text-muted">Issued {active.issued}</span>
+        </div>
+        <div className="flex items-center gap-2 group mt-2 cursor-pointer" onClick={() => window.open(active.link, "_blank")}>
+            <span className="text-xs font-medium text-ink group-hover:text-body transition-colors uppercase tracking-wider">
+              Verify Credential
+            </span>
+            <ArrowUpRight size={14} className="text-muted group-hover:text-ink transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        </div>
       </motion.div>
 
       {/* Dot pagination */}
-      <div className="mt-5 flex gap-2 items-center">
+      <div className="mt-6 flex gap-2 items-center">
         {CERTIFICATIONS.map((_, index) => {
           const theme = cardTheme(CERTIFICATIONS[index].tag);
           return (
