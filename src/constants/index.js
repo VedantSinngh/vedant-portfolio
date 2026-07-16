@@ -82,17 +82,41 @@ export const EXPERIENCES = [
 
 export const CERTIFICATIONS = [
   {
-    title: "AWS Certified Cloud Practitioner",
+    title: "AWS Certified Solutions Architect – Associate",
     issuer: "Amazon Web Services",
-    date: "2024",
-    link: "#"
+    issued: "Apr 2026",
+    expires: "Apr 2029",
+    credentialId: "354401a5-709c-4631-b56c-a0aa89ebdacf",
+    link: "https://www.credly.com/badges/354401a5-709c-4631-b56c-a0aa89ebdacf",
+    tag: "AWS",
   },
   {
-    title: "Machine Learning Specialization",
-    issuer: "Coursera",
-    date: "2023",
-    link: "#"
-  }
+    title: "AWS Certified Cloud Practitioner",
+    issuer: "Amazon Web Services",
+    issued: "Apr 2026",
+    expires: "Apr 2029",
+    credentialId: "c2740791-912d-416d-a9ff-54a95dc7a8d9",
+    link: "https://www.credly.com/badges/c2740791-912d-416d-a9ff-54a95dc7a8d9",
+    tag: "AWS",
+  },
+  {
+    title: "AWS Certified AI Practitioner",
+    issuer: "Amazon Web Services",
+    issued: "Mar 2026",
+    expires: "Mar 2029",
+    credentialId: "59e7b562-c0a8-4a16-a75a-15c1badd7637",
+    link: "https://www.credly.com/badges/59e7b562-c0a8-4a16-a75a-15c1badd7637",
+    tag: "AWS",
+  },
+  {
+    title: "Salesforce Certified Agentforce Specialist",
+    issuer: "Salesforce",
+    issued: "Dec 2025",
+    expires: null,
+    credentialId: "7322610",
+    link: "https://www.salesforce.com/trailblazer/vedantsinngh",
+    tag: "Salesforce",
+  },
 ];
 
 export const CONTACT = {
