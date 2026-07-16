@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ArrowUpRight } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useResume } from '../context/ResumeContext';
 import { CONTACT } from '../constants';
 
@@ -34,78 +34,53 @@ export default function ResumeModal() {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[999] flex items-end sm:items-center justify-center sm:p-6">
+        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 md:p-8">
 
-          {/* Backdrop — thin dark veil, no heavy blur */}
+          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
             onClick={closeResume}
-            className="absolute inset-0 bg-canvas/80 cursor-pointer"
+            className="absolute inset-0 bg-canvas/85"
           />
 
-          {/* Modal */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 16 }}
-            transition={{ type: 'spring', damping: 30, stiffness: 260 }}
-            className="relative z-10 w-full sm:max-w-4xl h-[90vh] sm:h-[85vh] bg-canvas border border-hairline rounded-t-2xl sm:rounded-2xl overflow-hidden flex flex-col"
+          {/* Floating close button */}
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
+            onClick={closeResume}
+            className="absolute top-5 right-5 z-20 p-2 text-muted hover:text-ink transition-colors"
+            aria-label="Close"
           >
+            <X size={20} strokeWidth={1.5} />
+          </motion.button>
 
-            {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-hairline-soft shrink-0">
-              <div>
-                <span className="t-caption-uppercase">Resume</span>
-                <h3 className="font-display text-[18px] text-ink font-light leading-tight mt-0.5">
-                  Vedant Singh
-                </h3>
+          {/* iframe wrapper — no bg, no border */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ type: 'spring', damping: 32, stiffness: 260 }}
+            className="relative z-10 w-full max-w-4xl h-[90vh]"
+          >
+            {/* Loading indicator */}
+            {isLoading && (
+              <div className="absolute inset-0 flex items-center justify-center z-20">
+                <div className="w-4 h-4 border border-hairline-strong border-t-ink rounded-full animate-spin" />
               </div>
+            )}
 
-              <div className="flex items-center gap-2">
-                <a
-                  href={CONTACT.resume}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 font-body text-[13px] text-muted hover:text-ink transition-colors"
-                  title="Open in Google Drive"
-                >
-                  <ArrowUpRight size={15} strokeWidth={1.5} />
-                  <span className="hidden sm:inline">Open in Drive</span>
-                </a>
-
-                <div className="w-px h-4 bg-hairline mx-1" />
-
-                <button
-                  onClick={closeResume}
-                  className="p-1.5 text-muted hover:text-ink transition-colors rounded-md hover:bg-surface-strong"
-                  aria-label="Close"
-                >
-                  <X size={18} strokeWidth={1.5} />
-                </button>
-              </div>
-            </div>
-
-            {/* Body */}
-            <div className="flex-1 relative bg-canvas">
-              {/* Minimal loading indicator */}
-              {isLoading && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 z-20 bg-canvas">
-                  <div className="w-5 h-5 border border-hairline-strong border-t-ink rounded-full animate-spin" />
-                  <span className="t-caption-uppercase text-muted">Loading</span>
-                </div>
-              )}
-
-              <iframe
-                src={embedUrl}
-                title="Vedant Singh Resume"
-                className="w-full h-full border-none"
-                allow="autoplay"
-                onLoad={() => setIsLoading(false)}
-              />
-            </div>
+            <iframe
+              src={embedUrl}
+              title="Vedant Singh Resume"
+              className="w-full h-full border-none bg-transparent"
+              allow="autoplay"
+              onLoad={() => setIsLoading(false)}
+            />
           </motion.div>
         </div>
       )}
