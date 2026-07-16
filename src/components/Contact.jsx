@@ -2,9 +2,11 @@ import React from 'react';
 import { CONTACT } from '../constants';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Github, Linkedin, FileText } from 'lucide-react';
+import { useResume } from '../context/ResumeContext';
 
 const Contact = () => {
   const [ref, visible] = useScrollReveal();
+  const { openResume } = useResume();
 
   return (
     <section className="section-pad py-section text-center" id="contact" ref={ref}>
@@ -30,10 +32,10 @@ const Contact = () => {
           LinkedIn
         </a>
 
-        <a href={CONTACT.resume} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 t-caption-uppercase hover:text-ink transition-colors">
+        <button onClick={openResume} className="flex items-center gap-2 t-caption-uppercase hover:text-ink transition-colors">
           <FileText size={16} strokeWidth={1.5} />
           Resume
-        </a>
+        </button>
       </div>
     </section>
   );

@@ -10,6 +10,8 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProjectDetail from './components/ProjectDetail';
 import { ThemeProvider } from './context/ThemeContext';
+import { ResumeProvider } from './context/ResumeContext';
+import ResumeModal from './components/ResumeModal';
 
 const Divider = () => (
   <div className="section-pad py-0">
@@ -38,12 +40,15 @@ const Portfolio = () => (
 const App = () => {
   return (
     <ThemeProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Portfolio />} />
-          <Route path="/projects/:slug" element={<ProjectDetail />} />
-        </Routes>
-      </BrowserRouter>
+      <ResumeProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Portfolio />} />
+            <Route path="/projects/:slug" element={<ProjectDetail />} />
+          </Routes>
+        </BrowserRouter>
+        <ResumeModal />
+      </ResumeProvider>
     </ThemeProvider>
   );
 };

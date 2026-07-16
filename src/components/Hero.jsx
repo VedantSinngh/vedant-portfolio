@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { CONTACT } from '../constants';
 import mainPhoto from '../assets/vedant-main.png';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, FileText } from 'lucide-react';
+import { useResume } from '../context/ResumeContext';
 
 const Hero = () => {
   const [show, setShow] = useState(false);
+  const { openResume } = useResume();
 
   useEffect(() => {
     const t = setTimeout(() => setShow(true), 80);
@@ -48,10 +50,10 @@ const Hero = () => {
               }}>
                 View Work
               </a>
-              <a href={CONTACT.resume} target="_blank" rel="noopener noreferrer" className="btn-outline">
+              <button onClick={openResume} className="btn-outline">
                 Resume
-                <ExternalLink size={16} strokeWidth={1.5} />
-              </a>
+                <FileText size={16} strokeWidth={1.5} />
+              </button>
             </div>
           </div>
 

@@ -1,6 +1,6 @@
 import project2 from "../assets/projects/rag.png";
 import project3 from "../assets/projects/inventory.png";
-import projectWeather from "../assets/projects/Weather.png"; // Placeholder/Substitute fallback image if needed
+import projectWeather from "../assets/projects/cloud-cost.png"; // Placeholder/Substitute fallback image if needed
 
 export const PROJECTS = [
   {
